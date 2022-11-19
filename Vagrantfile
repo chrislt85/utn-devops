@@ -12,13 +12,13 @@ Vagrant.configure("2") do |config|
   # A diferencia de lo que observamos en la unidad n°1, ahora el servicio que utiliza el puerto en realidad
   # va a estar dentro de un contenedor Docker, por lo que el redireccionamiento de los puertos, en este ejemplo,
   # tendran el mismo número. Para aclarar más este concepto, cuando nosotros ingresemos en nuestro navegador la
-  # url http://127.0.0.1:8081 la petición irá a la máquina virtual de VirtualBox (aprovisionada mediante Vagrant)
+  # url http://127.0.0.1:8080 la petición irá a la máquina virtual de VirtualBox (aprovisionada mediante Vagrant)
   # y a su vez irá al puerto 8081 que expone el contenedor Docker mediante una redirección de puertos del 80 al 8081
   # Para observar esto último, revise el archivo docker-compose.yml y verá una línea con el contenido "8081:80".
   # Esto se realiza para poder darle visibilidad a los puertos de la maquina virtual y además para que no se
   # solapen los puertos con los de nuestra equipo en el caso de que ese número de puerto este en uso.
 
-  config.vm.network "forwarded_port", guest: 8081, host: 8081
+  config.vm.network "forwarded_port", guest: 8081, host: 8080
   config.vm.network "forwarded_port", guest: 4400, host: 4400
 
   # Create a private network, which allows host-only access to the machine
